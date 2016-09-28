@@ -14,9 +14,15 @@ import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity {
 
+    /**
+     * 轮播图片的ViewFlipper
+     */
     private ViewFlipper fipper;
+    /**
+     * 轮播文字的ViewFlipper
+     */
     private ViewFlipper vifper;
     private TextView text;
     private ArrayList<String> datas = new ArrayList<>();
@@ -38,6 +44,7 @@ public class MainActivity extends AppCompatActivity{
 
         addView();
 
+        //发送一个延时消息，两秒之后才开始滚动，否则一开启页面就开始滚动，就看不到第一行信息了
         new Handler() {
         }.postDelayed(new Runnable() {
             @Override
@@ -80,9 +87,13 @@ public class MainActivity extends AppCompatActivity{
                     }
                 });
             }
-        }, 0, 4000);
+        }, 0, 1000);
     }
 
+    /**
+     * 设置出现和消失时的动画效果
+     * viewfper执行下一个
+     */
     private void moveTonext() {
         vifper.setInAnimation(this, R.anim.in_bottomtop);
         vifper.setOutAnimation(this, R.anim.out_bottomtop);
