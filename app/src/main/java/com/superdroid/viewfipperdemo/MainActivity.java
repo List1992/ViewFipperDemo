@@ -34,7 +34,9 @@ public class MainActivity extends AppCompatActivity {
 
         fipper = (ViewFlipper) findViewById(R.id.flipper);
         vifper = (ViewFlipper) findViewById(R.id.viper);
-        fipper.startFlipping();
+
+
+        //fipper.startFlipping();
 
         datas.add("滚滚长江东逝水");
         datas.add("浪花淘尽英雄");
@@ -43,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
         datas.add("几度夕阳红");
 
         addView();
+        //也可以直接调用该方法实现循环滚动，但是不能添加动画效果
+        // vifper.startFlipping();
 
         //发送一个延时消息，两秒之后才开始滚动，否则一开启页面就开始滚动，就看不到第一行信息了
         new Handler() {
@@ -87,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
             }
-        }, 0, 1000);
+        }, 0, 3000);
     }
 
     /**
@@ -97,7 +101,11 @@ public class MainActivity extends AppCompatActivity {
     private void moveTonext() {
         vifper.setInAnimation(this, R.anim.in_bottomtop);
         vifper.setOutAnimation(this, R.anim.out_bottomtop);
-        vifper.showNext();
+        vifper.showNext();//切换到下一个文字
+
+//        fipper.setInAnimation(this, R.anim.in_bottomtop);
+//        fipper.setOutAnimation(this, R.anim.out_bottomtop);
+        fipper.showNext();//切换到下一个图片
     }
 
 }
